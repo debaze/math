@@ -60,6 +60,12 @@ Matrix.orthographic;
 
 /**
  * @abstract
+ * @returns {Matrix}
+ */
+Matrix.rotation;
+
+/**
+ * @abstract
  * @param {Vector} v
  * @returns {Matrix}
  */

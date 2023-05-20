@@ -128,6 +128,20 @@ Matrix3.orthographic = function(v) {
 	);
 };
 
+/**
+ * @override
+ * @param {Number} n
+ */
+Matrix3.rotation = function(n) {
+	const c = Math.cos(n), s = Math.sin(n);
+
+	return new Matrix3(
+		c, -s, 0,
+		s, c, 0,
+		0, 0, 1,
+	);
+};
+
 /** @override */
 Matrix3.translation = v => new Matrix3(
 	1, 0, 0,

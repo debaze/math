@@ -1,4 +1,4 @@
-import {Matrix} from "./index.js";
+import {Matrix, Vector3} from "./index.js";
 
 /** @extends Matrix */
 export class Matrix4 extends Matrix {
@@ -180,6 +180,44 @@ Matrix4.orthographic = function(v) {
 		0, 0, 2 / v[2], 0,
 		-1, 1, 0, 1,
 	);
+};
+
+/**
+ * @override
+ * @param {Vector3} v
+ */
+Matrix4.rotation = function(v) {
+	let c = Math.cos(v[0]);
+	let s = Math.sin(v[0]);
+
+	const mx = new Matrix4(
+		1, 0, 0, 0,
+		0, c, s, 0,
+		0, -s, c, 0,
+		0, 0, 0, 1,
+	);
+
+	c = Math.cos(v[1]);
+	s = Math.sin(v[1]);
+
+	const my = new Matrix4(
+		c, 0, -s, 0,
+		0, 1, 0, 0,
+		s, 0, c, 0,
+		0, 0, 0, 1,
+	);
+
+	c = Math.cos(v[2]);
+	s = Math.sin(v[2]);
+
+	const mz = new Matrix4(
+		c, s, 0, 0,
+		-s, c, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1,
+	);
+
+	return mx.multiply(my).multiply(mz);
 };
 
 /** @override */
