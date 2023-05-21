@@ -73,6 +73,11 @@ Vector3.prototype.floor = function() {
 };
 
 /** @override */
+Vector3.prototype.magnitude = function() {
+	return Math.sqrt(this.dot(this));
+};
+
+/** @override */
 Vector3.prototype.lerp = function(v, n) {
 	this[0] += n * (v[0] - this[0]);
 	this[1] += n * (v[1] - this[1]);

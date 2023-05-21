@@ -66,6 +66,11 @@ Vector4.prototype.floor = function() {
 };
 
 /** @override */
+Vector4.prototype.magnitude = function() {
+	return Math.sqrt(this.dot(this));
+};
+
+/** @override */
 Vector4.prototype.lerp = function(v, n) {
 	this[0] += n * (v[0] - this[0]);
 	this[1] += n * (v[1] - this[1]);

@@ -66,6 +66,12 @@ Vector.prototype.floor;
 
 /**
  * @abstract
+ * @returns {Number}
+ */
+Vector.prototype.magnitude;
+
+/**
+ * @abstract
  * @param {Vector} v
  * @param {Number} n
  * @returns {Vector}
@@ -85,6 +91,15 @@ Vector.prototype.multiply;
  * @returns {Vector}
  */
 Vector.prototype.multiplyScalar;
+
+/** @returns {Vector} */
+Vector.prototype.normalize = function() {
+	const magnitude = this.magnitude();
+
+	if (magnitude === 0) return this.subtract(this);
+
+	return this.divideScalar(magnitude);
+};
 
 /**
  * @abstract
