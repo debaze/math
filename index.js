@@ -6,5 +6,5 @@ export {Vector} from "./Vector.js";
 export {Vector2} from "./Vector2.js";
 export {Vector3} from "./Vector3.js";
 export {Vector4} from "./Vector4.js";
-export {clamp, clampDown, clampUp} from "./utils/clamp.js";
+export {clamp, max, min} from "./utils/clamp.js";
 export {intersects} from "./utils/intersects.js";
