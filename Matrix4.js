@@ -183,6 +183,27 @@ Matrix4.orthographic = function(v) {
 };
 
 /**
+ * Returns a left-handed perspective matrix.
+ * 
+ * @param {Number} fov Field of view in radians
+ * @param {Number} aspect
+ * @param {Number} near
+ * @param {Number} far
+ * @returns {Matrix4}
+ */
+Matrix4.perspective = function(fov, aspect, near, far) {
+	const f = 1 / Math.tan(fov * .5);
+	const range = near - far;
+
+	return new Matrix4(
+		f / aspect, 0, 0, 0,
+		0, -f, 0, 0,
+		0, 0, far / range, 1,
+		0, 0, (far * near) / range, 0,
+	);
+};
+
+/**
  * @override
  * @param {Vector3} v
  */
