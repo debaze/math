@@ -170,6 +170,25 @@ Matrix4.identity = () => new Matrix4(
 	0, 0, 0, 1,
 );
 
+/**
+ * @param {Vector3} eye
+ * @param {Vector3} target (will be altered by this method)
+ * @param {Vector3} up
+ * @returns {Matrix4}
+ */
+Matrix4.lookAt = function(eye, target, up) {
+	const z = target.subtract(eye).normalize();
+	const x = up.cross(z).normalize();
+	const y = z.cross(x);
+
+	return new Matrix4(
+		x[0], y[0], z[0], 0,
+		x[1], y[1], z[1], 0,
+		x[2], y[2], z[2], 0,
+		-x.dot(eye), -y.dot(eye), -z.dot(eye), 1,
+	);
+};
+
 /** @override */
 Matrix4.orthographic = function(v) {
 	if (v[0] === 0 || v[1] === 0 || v[2] === 0) throw RangeError("Division by zero");
