@@ -66,17 +66,16 @@ Vector.prototype.floor;
 
 /**
  * @abstract
- * @returns {Number}
- */
-Vector.prototype.magnitude;
-
-/**
- * @abstract
  * @param {Vector} v
  * @param {Number} n
  * @returns {Vector}
  */
 Vector.prototype.lerp;
+
+/** @returns {Number} */
+Vector.prototype.magnitude = function() {
+	return Math.sqrt(this.dot(this));
+};
 
 /**
  * @abstract
@@ -100,6 +99,12 @@ Vector.prototype.normalize = function() {
 
 	return this.divideScalar(magnitude);
 };
+
+/**
+ * @abstract
+ * @returns {Vector}
+ */
+Vector.prototype.normalize;
 
 /**
  * @abstract

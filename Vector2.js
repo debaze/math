@@ -56,11 +56,6 @@ Vector2.prototype.floor = function() {
 };
 
 /** @override */
-Vector2.prototype.magnitude = function() {
-	return Math.sqrt(this.dot(this));
-};
-
-/** @override */
 Vector2.prototype.lerp = function(v, n) {
 	this[0] += n * (v[0] - this[0]);
 	this[1] += n * (v[1] - this[1]);
@@ -82,6 +77,15 @@ Vector2.prototype.multiplyScalar = function(n) {
 	this[1] *= n;
 
 	return this;
+};
+
+/** @override */
+Vector2.prototype.normalize = function() {
+	const magnitude = this.magnitude();
+
+	if (magnitude === 0) return new Vector2();
+
+	return this.divideScalar(magnitude);
 };
 
 /** @override */
