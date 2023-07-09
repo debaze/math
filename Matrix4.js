@@ -1,4 +1,4 @@
-import {Matrix, Vector3} from "./index.js";
+import {Matrix, PI, Vector3} from "./index.js";
 
 /** @extends Matrix */
 export class Matrix4 extends Matrix {
@@ -202,23 +202,26 @@ Matrix4.orthographic = function(v) {
 };
 
 /**
- * Returns a left-handed perspective matrix.
+ * @todo Include bias?
+ * 
+ * Returns a perspective projection matrix.
  * 
  * @param {Number} fov Field of view in radians
  * @param {Number} aspect
  * @param {Number} near
  * @param {Number} far
+ * @param {Number} cs Coordinate system: 1 for LH, -1 for RH
  * @returns {Matrix4}
  */
-Matrix4.perspective = function(fov, aspect, near, far) {
-	const f = 1 / Math.tan(fov * .5);
-	const range = near - far;
+Matrix4.perspective = function(fov, aspect, near, far, cs) {
+	const f = Math.tan((PI - fov) * .5);
+	const range = far - near;
 
 	return new Matrix4(
 		f / aspect, 0, 0, 0,
-		0, -f, 0, 0,
-		0, 0, far / range, 1,
-		0, 0, (far * near) / range, 0,
+		0, f, 0, 0,
+		0, 0, far / range, cs,
+		0, 0, -cs * near * far / range, 0,
 	);
 };
 
