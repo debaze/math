@@ -120,3 +120,11 @@ Vector.prototype.subtract;
 Vector.prototype.subtractScalar = function(n) {
 	return this.addScalar(-n);
 };
+
+/**
+ * @param {Vector} v
+ * @returns {Vector}
+ */
+Vector.prototype.to = function(v) {
+    return v.clone().subtract(this).magnitude();
+};
