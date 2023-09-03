@@ -95,3 +95,8 @@ Vector2.prototype.subtract = function(v) {
 
 	return this;
 };
+
+/** @returns {String} */
+Vector2.prototype.toString = function() {
+	return `${this[0].toFixed(2)} ${this[1].toFixed(2)}`;
+};
