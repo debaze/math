@@ -1,79 +1,94 @@
+import {Vector} from "./index.js";
+
 /**
  * @abstract
- * @extends Float32Array
  */
 export class Matrix extends Float32Array {
 	/**
+	 * @abstract
+	 * @returns {Matrix}
+	 */
+	static identity() {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @param {Vector} vector
+	 * @returns {Matrix}
+	 * @throws {RangeError}
+	 */
+	static orthographic(vector) {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @param {Vector} vector
+	 * @returns {Matrix}
+	 */
+	static translation(vector) {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @param {Vector} vector
+	 * @returns {Matrix}
+	 */
+	static scale(vector) {
+		throw new Error("Not implemented");
+	}
+
+	/**
 	 * @param {Number} dimension
-	 * @param {Object} elements
+	 * @param {Number[]} elements
 	 */
 	constructor(dimension, elements) {
-		super(dimension).set(elements);
+		super(dimension);
+
+		this.set(elements);
+	}
+
+	/**
+	 * @abstract
+	 * @returns {Matrix}
+	 */
+	clone() {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @returns {this}
+	 */
+	invert() {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @param {Matrix} matrix
+	 * @returns {this}
+	 */
+	multiply(matrix) {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @param {Number} scalar
+	 * @returns {this}
+	 */
+	multiplyScalar(scalar) {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @returns {this}
+	 */
+	transpose() {
+		throw new Error("Not implemented");
 	}
 }
-
-/**
- * @abstract
- * @returns {Matrix}
- */
-Matrix.prototype.clone;
-
-/**
- * @abstract
- * @returns {Matrix}
- */
-Matrix.prototype.invert;
-
-/**
- * @abstract
- * @param {Matrix} m
- * @returns {Matrix}
- */
-Matrix.prototype.multiply;
-
-/**
- * @abstract
- * @param {Number} n
- * @returns {Matrix}
- */
-Matrix.prototype.multiplyScalar;
-
-/**
- * @abstract
- * @returns {Matrix}
- */
-Matrix.prototype.transpose;
-
-/**
- * @abstract
- * @returns {Matrix}
- */
-Matrix.identity;
-
-/**
- * @abstract
- * @param {Vector} v
- * @returns {Matrix}
- * @throws {RangeError}
- */
-Matrix.orthographic;
-
-/**
- * @abstract
- * @returns {Matrix}
- */
-Matrix.rotation;
-
-/**
- * @abstract
- * @param {Vector} v
- * @returns {Matrix}
- */
-Matrix.translation;
-
-/**
- * @abstract
- * @param {Vector} v
- * @returns {Matrix}
- */
-Matrix.scale;

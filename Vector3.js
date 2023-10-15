@@ -1,123 +1,148 @@
 import {Vector} from "./index.js";
 
-/** @extends Vector */
 export class Vector3 extends Vector {
 	/**
-	 * @param {Number} [x]
-	 * @param {Number} [y]
-	 * @param {Number} [z]
+	 * @param {...Number} elements
 	 */
-	constructor() {
-		super(3, arguments);
+	constructor(...elements) {
+		super(3, elements);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	add(vector) {
+		this[0] += vector[0];
+		this[1] += vector[1];
+		this[2] += vector[2];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	addScalar(scalar) {
+		this[0] += scalar;
+		this[1] += scalar;
+		this[2] += scalar;
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	clone() {
+		return new Vector3(this[0], this[1], this[2]);
+	}
+
+	/**
+	 * @param {Vector3} vector
+	 * @returns {Vector3}
+	 */
+	cross(vector) {
+		return new Vector3(
+			this[1] * vector[2] - this[2] * vector[1],
+			this[2] * vector[0] - this[0] * vector[2],
+			this[0] * vector[1] - this[1] * vector[0],
+		);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	divide(vector) {
+		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0) {
+			throw new RangeError("Division by zero");
+		}
+
+		this[0] /= vector[0];
+		this[1] /= vector[1];
+		this[2] /= vector[2];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	dot(vector) {
+		return this[0] * vector[0] + this[1] * vector[1] + this[2] * vector[2];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	floor() {
+		this[0] |= 0;
+		this[1] |= 0;
+		this[2] |= 0;
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	lerp(vector, multiplier) {
+		this[0] += multiplier * (vector[0] - this[0]);
+		this[1] += multiplier * (vector[1] - this[1]);
+		this[2] += multiplier * (vector[2] - this[2]);
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	multiply(vector) {
+		this[0] *= vector[0];
+		this[1] *= vector[1];
+		this[2] *= vector[2];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	multiplyScalar(scalar) {
+		this[0] *= scalar;
+		this[1] *= scalar;
+		this[2] *= scalar;
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	normalize() {
+		const magnitude = this.magnitude();
+
+		if (magnitude === 0) {
+			return this.subtract(this);
+		}
+
+		return this.divideScalar(magnitude);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	subtract(vector) {
+		this[0] -= vector[0];
+		this[1] -= vector[1];
+		this[2] -= vector[2];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	toString() {
+		return `${this[0].toFixed(2)} ${this[1].toFixed(2)} ${this[2].toFixed(2)}`;
 	}
 }
-
-/** @override */
-Vector3.prototype.add = function(v) {
-	this[0] += v[0];
-	this[1] += v[1];
-	this[2] += v[2];
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.addScalar = function(n) {
-	this[0] += n;
-	this[1] += n;
-	this[2] += n;
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.clone = function() {
-	return new Vector3(this[0], this[1], this[2]);
-};
-
-/**
- * @param {Vector3} v
- * @returns {Vector3}
- */
-Vector3.prototype.cross = function(v) {
-	return new Vector3(
-		this[1] * v[2] - this[2] * v[1],
-		this[2] * v[0] - this[0] * v[2],
-		this[0] * v[1] - this[1] * v[0],
-	);
-};
-
-/** @override */
-Vector3.prototype.divide = function(v) {
-	if (v[0] === 0 || v[1] === 0 || v[2] === 0) throw RangeError("Division by zero");
-
-	this[0] /= v[0];
-	this[1] /= v[1];
-	this[2] /= v[2];
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.dot = function(v) {
-	return this[0] * v[0] + this[1] * v[1] + this[2] * v[2];
-};
-
-/** @override */
-Vector3.prototype.floor = function() {
-	this[0] |= 0;
-	this[1] |= 0;
-	this[2] |= 0;
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.lerp = function(v, n) {
-	this[0] += n * (v[0] - this[0]);
-	this[1] += n * (v[1] - this[1]);
-	this[2] += n * (v[2] - this[2]);
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.multiply = function(v) {
-	this[0] *= v[0];
-	this[1] *= v[1];
-	this[2] *= v[2];
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.multiplyScalar = function(n) {
-	this[0] *= n;
-	this[1] *= n;
-	this[2] *= n;
-
-	return this;
-};
-
-/** @override */
-Vector3.prototype.normalize = function() {
-	const magnitude = this.magnitude();
-
-	if (magnitude === 0) return new Vector3();
-
-	return this.divideScalar(magnitude);
-};
-
-/** @override */
-Vector3.prototype.subtract = function(v) {
-	this[0] -= v[0];
-	this[1] -= v[1];
-	this[2] -= v[2];
-
-	return this;
-};
-
-/** @returns {String} */
-Vector3.prototype.toString = function() {
-	return `${this[0].toFixed(2)} ${this[1].toFixed(2)} ${this[2].toFixed(2)}`;
-};

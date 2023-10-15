@@ -1,120 +1,144 @@
 import {Vector} from "./index.js";
 
-/** @extends Vector */
 export class Vector4 extends Vector {
 	/**
-	 * @param {Number} [x]
-	 * @param {Number} [y]
-	 * @param {Number} [z]
-	 * @param {Number} [w]
+	 * @param {...Number} elements
 	 */
-	constructor() {
-		super(4, arguments);
+	constructor(...elements) {
+		super(4, elements);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	add(vector) {
+		this[0] += vector[0];
+		this[1] += vector[1];
+		this[2] += vector[2];
+		this[3] += vector[3];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	addScalar(scalar) {
+		this[0] += scalar;
+		this[1] += scalar;
+		this[2] += scalar;
+		this[3] += scalar;
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	clone() {
+		return new Vector4(this[0], this[1], this[2], this[3]);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	divide(vector) {
+		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0 || vector[3] === 0) {
+			throw new RangeError("Division by zero");
+		}
+
+		this[0] /= vector[0];
+		this[1] /= vector[1];
+		this[2] /= vector[2];
+		this[3] /= vector[3];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	dot(vector) {
+		return this[0] * vector[0] + this[1] * vector[1] + this[2] * vector[2] + this[3] * vector[3];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	floor() {
+		this[0] |= 0;
+		this[1] |= 0;
+		this[2] |= 0;
+		this[3] |= 0;
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	lerp(vector, multiplier) {
+		this[0] += multiplier * (vector[0] - this[0]);
+		this[1] += multiplier * (vector[1] - this[1]);
+		this[2] += multiplier * (vector[2] - this[2]);
+		this[3] += multiplier * (vector[3] - this[3]);
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	multiply(vector) {
+		this[0] *= vector[0];
+		this[1] *= vector[1];
+		this[2] *= vector[2];
+		this[3] *= vector[3];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	multiplyScalar(scalar) {
+		this[0] *= scalar;
+		this[1] *= scalar;
+		this[2] *= scalar;
+		this[3] *= scalar;
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	normalize() {
+		const magnitude = this.magnitude();
+
+		if (magnitude === 0) {
+			return this.subtract(this);
+		}
+
+		return this.divideScalar(magnitude);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	subtract(vector) {
+		this[0] -= vector[0];
+		this[1] -= vector[1];
+		this[2] -= vector[2];
+		this[3] -= vector[3];
+
+		return this;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	toString() {
+		return `${this[0].toFixed(2)} ${this[1].toFixed(2)} ${this[2].toFixed(2)} ${this[3].toFixed(2)}`;
 	}
 }
-
-/** @override */
-Vector4.prototype.add = function(v) {
-	this[0] += v[0];
-	this[1] += v[1];
-	this[2] += v[2];
-	this[3] += v[3];
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.addScalar = function(n) {
-	this[0] += n;
-	this[1] += n;
-	this[2] += n;
-	this[3] += n;
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.clone = function() {
-	return new Vector4(this[0], this[1], this[2], this[3]);
-};
-
-/** @override */
-Vector4.prototype.divide = function(v) {
-	if (v[0] === 0 || v[1] === 0 || v[2] === 0 || v[3] === 0) throw RangeError("Division by zero");
-
-	this[0] /= v[0];
-	this[1] /= v[1];
-	this[2] /= v[2];
-	this[3] /= v[3];
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.dot = function(v) {
-	return this[0] * v[0] + this[1] * v[1] + this[2] * v[2] + this[3] * v[3];
-};
-
-/** @override */
-Vector4.prototype.floor = function() {
-	this[0] |= 0;
-	this[1] |= 0;
-	this[2] |= 0;
-	this[3] |= 0;
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.lerp = function(v, n) {
-	this[0] += n * (v[0] - this[0]);
-	this[1] += n * (v[1] - this[1]);
-	this[2] += n * (v[2] - this[2]);
-	this[3] += n * (v[3] - this[3]);
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.multiply = function(v) {
-	this[0] *= v[0];
-	this[1] *= v[1];
-	this[2] *= v[2];
-	this[3] *= v[3];
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.multiplyScalar = function(n) {
-	this[0] *= n;
-	this[1] *= n;
-	this[2] *= n;
-	this[3] *= n;
-
-	return this;
-};
-
-/** @override */
-Vector4.prototype.normalize = function() {
-	const magnitude = this.magnitude();
-
-	if (magnitude === 0) return new Vector4();
-
-	return this.divideScalar(magnitude);
-};
-
-/** @override */
-Vector4.prototype.subtract = function(v) {
-	this[0] -= v[0];
-	this[1] -= v[1];
-	this[2] -= v[2];
-	this[3] -= v[3];
-
-	return this;
-};
-
-/** @returns {String} */
-Vector4.prototype.toString = function() {
-	return `${this[0].toFixed(2)} ${this[1].toFixed(2)} ${this[2].toFixed(2)} ${this[3].toFixed(2)}`;
-};
