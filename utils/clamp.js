@@ -12,15 +12,15 @@ export function clamp(n, min, max) {
 }
 
 /**
- * @param {Number} n
- * @param {Number} max
+ * @param {Number} a
+ * @param {Number} b
  * @returns {Number}
  */
-export const max = (n, max) => n > max ? max : n;
+export const max = (a, b) => a > b ? a : b;
 
 /**
- * @param {Number} n
- * @param {Number} min
+ * @param {Number} a
+ * @param {Number} b
  * @returns {Number}
  */
-export const min = (n, min) => n < min ? min : n;
+export const min = (a, b) => a > b ? b : a;
