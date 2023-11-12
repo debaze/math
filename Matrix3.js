@@ -1,9 +1,6 @@
 import {Matrix} from "./index.js";
 
 export class Matrix3 extends Matrix {
-	/**
-	 * @inheritdoc
-	 */
 	static identity() {
 		return new Matrix3(
 			1, 0, 0,
@@ -12,9 +9,6 @@ export class Matrix3 extends Matrix {
 		);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	static orthographic(vector) {
 		if (vector[0] === 0 || vector[1] === 0) {
 			throw new RangeError("Division by zero");
@@ -42,9 +36,6 @@ export class Matrix3 extends Matrix {
 		);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	static translation(vector) {
 		return new Matrix3(
 			1, 0, 0,
@@ -53,9 +44,6 @@ export class Matrix3 extends Matrix {
 		);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	static scale(vector) {
 		return new Matrix3(
 			vector[0], 0, 0,
@@ -71,16 +59,10 @@ export class Matrix3 extends Matrix {
 		super(9, elements);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	clone() {
 		return new Matrix3(this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8]);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	invert() {
 		const
 			a00 = this[0],
@@ -114,9 +96,6 @@ export class Matrix3 extends Matrix {
 		return this.multiplyScalar(1 / d);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	multiply(matrix) {
 		const
 			a00 = this[0],
@@ -151,9 +130,6 @@ export class Matrix3 extends Matrix {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	multiplyScalar(scalar) {
 		this[0] *= scalar;
 		this[1] *= scalar;
@@ -168,9 +144,6 @@ export class Matrix3 extends Matrix {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	transpose() {
 		let element = this[1];
 		this[1] = this[3];

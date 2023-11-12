@@ -8,9 +8,6 @@ export class Vector3 extends Vector {
 		super(3, elements);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	add(vector) {
 		this[0] += vector[0];
 		this[1] += vector[1];
@@ -19,9 +16,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	addScalar(scalar) {
 		this[0] += scalar;
 		this[1] += scalar;
@@ -30,9 +24,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	clone() {
 		return new Vector3(this[0], this[1], this[2]);
 	}
@@ -49,9 +40,6 @@ export class Vector3 extends Vector {
 		);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	divide(vector) {
 		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0) {
 			throw new RangeError("Division by zero");
@@ -64,16 +52,10 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	dot(vector) {
 		return this[0] * vector[0] + this[1] * vector[1] + this[2] * vector[2];
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	floor() {
 		this[0] |= 0;
 		this[1] |= 0;
@@ -82,9 +64,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	lerp(vector, multiplier) {
 		this[0] += multiplier * (vector[0] - this[0]);
 		this[1] += multiplier * (vector[1] - this[1]);
@@ -93,9 +72,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	multiply(vector) {
 		this[0] *= vector[0];
 		this[1] *= vector[1];
@@ -104,9 +80,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	multiplyScalar(scalar) {
 		this[0] *= scalar;
 		this[1] *= scalar;
@@ -115,9 +88,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	normalize() {
 		const magnitude = this.magnitude();
 
@@ -128,9 +98,6 @@ export class Vector3 extends Vector {
 		return this.divideScalar(magnitude);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	subtract(vector) {
 		this[0] -= vector[0];
 		this[1] -= vector[1];
@@ -139,9 +106,6 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	toString() {
 		return `${this[0].toFixed(2)} ${this[1].toFixed(2)} ${this[2].toFixed(2)}`;
 	}
