@@ -43,8 +43,6 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @todo Include bias?
-	 * 
 	 * Returns a perspective projection matrix.
 	 * 
 	 * @param {Number} fieldOfView In radians
@@ -52,10 +50,11 @@ export class Matrix4 extends Matrix {
 	 * @param {Number} nearPlane
 	 * @param {Number} farPlane
 	 * @param {Number} coordinateSystem 1 for left-handed, -1 for right-handed
+	 * @param {Number} [bias]
 	 * @returns {Matrix4}
 	 */
-	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem) {
-		const f = Math.tan((PI - fieldOfView) * .5);
+	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem, bias = 1) {
+		const f = Math.tan(bias - fieldOfView * .5);
 		const range = farPlane - nearPlane;
 
 		return new Matrix4(
