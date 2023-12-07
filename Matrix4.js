@@ -53,7 +53,7 @@ export class Matrix4 extends Matrix {
 	 * @param {Number} [bias]
 	 * @returns {Matrix4}
 	 */
-	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem, bias = 1) {
+	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem, bias = PI * .5) {
 		const f = Math.tan(bias - fieldOfView * .5);
 		const range = farPlane - nearPlane;
 
