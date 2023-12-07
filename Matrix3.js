@@ -25,7 +25,7 @@ export class Matrix3 extends Matrix {
 	 * @param {Number} scalar
 	 * @returns {Matrix3}
 	 */
-	static rotation = function(scalar) {
+	static rotation(scalar) {
 		const c = Math.cos(scalar);
 		const s = Math.sin(scalar);
 
