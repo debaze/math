@@ -1,4 +1,6 @@
 /**
+ * @todo Switch to branchless design
+ * 
  * @param {Number} n
  * @param {Number} min
  * @param {Number} max
@@ -12,6 +14,8 @@ export function clamp(n, min, max) {
 }
 
 /**
+ * @todo Switch to branchless design
+ * 
  * @param {Number} a
  * @param {Number} b
  * @returns {Number}
@@ -19,6 +23,8 @@ export function clamp(n, min, max) {
 export const max = (a, b) => a > b ? a : b;
 
 /**
+ * @todo Switch to branchless design
+ * 
  * @param {Number} a
  * @param {Number} b
  * @returns {Number}
