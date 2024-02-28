@@ -64,6 +64,10 @@ export class Vector3 extends Vector {
 		return this;
 	}
 
+	isNull() {
+		return this[0] === 0 && this[1] === 0 && this[2] === 0;
+	}
+
 	lerp(vector, multiplier) {
 		this[0] += multiplier * (vector[0] - this[0]);
 		this[1] += multiplier * (vector[1] - this[1]);

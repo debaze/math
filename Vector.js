@@ -80,6 +80,14 @@ export class Vector extends Float32Array {
 
 	/**
 	 * @abstract
+	 * @returns {Boolean}
+	 */
+	isNull() {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
 	 * @param {Vector} vector
 	 * @param {Number} multiplier
 	 * @returns {this}
