@@ -125,13 +125,11 @@ export class Vector extends Float32Array {
 	 * @returns {this}
 	 */
 	normalize() {
-		const magnitude = this.magnitude();
-
-		if (magnitude === 0) {
-			return this.subtract(this);
+		if (this.isNull()) {
+			return this;
 		}
 
-		return this.divideScalar(magnitude);
+		return this.divideScalar(this.magnitude());
 	}
 
 	/**

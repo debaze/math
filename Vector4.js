@@ -87,16 +87,6 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
-	normalize() {
-		const magnitude = this.magnitude();
-
-		if (magnitude === 0) {
-			return this.subtract(this);
-		}
-
-		return this.divideScalar(magnitude);
-	}
-
 	subtract(vector) {
 		this[0] -= vector[0];
 		this[1] -= vector[1];
