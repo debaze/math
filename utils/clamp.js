@@ -1,32 +1,24 @@
 /**
- * @todo Switch to branchless design
- * 
- * @param {Number} n
- * @param {Number} min
- * @param {Number} max
- * @returns {Number}
+ * @param {Number} a
+ * @param {Number} b
  */
-export function clamp(n, min, max) {
-	if (n < min) return min;
-	if (n > max) return max;
-
-	return n;
+export function max(a, b) {
+	return a - (a - b & a - b >> 31);
 }
 
 /**
- * @todo Switch to branchless design
- * 
  * @param {Number} a
  * @param {Number} b
- * @returns {Number}
  */
-export const max = (a, b) => a > b ? a : b;
+export function min(a, b) {
+	return b + (a - b & a - b >> 31);
+}
 
 /**
- * @todo Switch to branchless design
- * 
- * @param {Number} a
- * @param {Number} b
- * @returns {Number}
+ * @param {Number} n
+ * @param {Number} a Lower bound
+ * @param {Number} b Upper bound
  */
-export const min = (a, b) => a > b ? b : a;
+export function clamp(n, a, b) {
+	return min(max(n, a), b);
+}
