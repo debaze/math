@@ -22,3 +22,12 @@ export function min(a, b) {
 export function clamp(n, a, b) {
 	return min(max(n, a), b);
 }
+
+/**
+ * @param {Number} a Start (t = 0)
+ * @param {Number} b End (t = 1)
+ * @param {Number} t Interpolator
+ */
+export function lerp(a, b, t) {
+	return a + (b - a) * t;
+}
