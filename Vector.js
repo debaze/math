@@ -22,6 +22,7 @@ export class Vector extends Float32Array {
 
 	/**
 	 * @deprecated
+	 * 
 	 * @abstract
 	 * @returns {Vector}
 	 */
