@@ -30,6 +30,9 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @deprecated
+	 */
 	clone() {
 		return new Vector4(this[0], this[1], this[2], this[3]);
 	}
