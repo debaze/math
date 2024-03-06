@@ -3,16 +3,6 @@
  */
 export class Vector extends Float32Array {
 	/**
-	 * @param {Number} dimension
-	 * @param {Number[]} elements
-	 */
-	constructor(dimension, elements) {
-		super(dimension);
-
-		this.set(elements);
-	}
-
-	/**
 	 * @abstract
 	 * @param {Vector} vector
 	 * @returns {this}

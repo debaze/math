@@ -2,10 +2,14 @@ import {Vector} from "./index.js";
 
 export class Vector2 extends Vector {
 	/**
+	 * @overload
 	 * @param {...Number} elements
+	 * 
+	 * @overload
+	 * @param {Vector2} vector
 	 */
-	constructor(...elements) {
-		super(2, elements);
+	constructor() {
+		super(arguments[0] instanceof Vector2 ? arguments[0] : [arguments[0], arguments[1]]);
 	}
 
 	add(vector) {
