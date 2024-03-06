@@ -41,6 +41,8 @@ export class Matrix extends Float32Array {
 	}
 
 	/**
+	 * @deprecated
+	 * 
 	 * @abstract
 	 * @returns {Matrix}
 	 */
