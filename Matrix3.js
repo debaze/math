@@ -53,10 +53,14 @@ export class Matrix3 extends Matrix {
 	}
 
 	/**
+	 * @overload
 	 * @param {...Number} elements
+	 * 
+	 * @overload
+	 * @param {Matrix3} matrix
 	 */
-	constructor(...elements) {
-		super(9, elements);
+	constructor() {
+		super(arguments[0] instanceof Matrix3 ? arguments[0] : [...arguments].slice(0, 9));
 	}
 
 	clone() {

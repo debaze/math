@@ -122,10 +122,14 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
+	 * @overload
 	 * @param {...Number} elements
+	 * 
+	 * @overload
+	 * @param {Matrix4} matrix
 	 */
-	constructor(...elements) {
-		super(16, elements);
+	constructor() {
+		super(arguments[0] instanceof Matrix4 ? arguments[0] : [...arguments].slice(0, 16));
 	}
 
 	clone() {

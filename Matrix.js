@@ -41,16 +41,6 @@ export class Matrix extends Float32Array {
 	}
 
 	/**
-	 * @param {Number} dimension
-	 * @param {Number[]} elements
-	 */
-	constructor(dimension, elements) {
-		super(dimension);
-
-		this.set(elements);
-	}
-
-	/**
 	 * @abstract
 	 * @returns {Matrix}
 	 */
