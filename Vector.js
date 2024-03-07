@@ -142,6 +142,8 @@ export class Vector extends Float32Array {
 	}
 
 	/**
+	 * @deprecated
+	 * 
 	 * @param {Vector} vector
 	 * @returns {Number}
 	 */
