@@ -60,7 +60,7 @@ export class Matrix3 extends Matrix {
 	 * @param {Matrix3} matrix
 	 */
 	constructor() {
-		super(arguments[0] instanceof Matrix3 ? arguments[0] : [...arguments].slice(0, 9));
+		super(arguments[0] instanceof Matrix3 ? arguments[0] : [arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7], arguments[8]]);
 	}
 
 	/**

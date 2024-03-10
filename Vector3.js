@@ -9,7 +9,7 @@ export class Vector3 extends Vector {
 	 * @param {Vector3} vector
 	 */
 	constructor() {
-		super(arguments[0] instanceof Vector3 ? arguments[0] : [...arguments].slice(0, 3));
+		super(arguments[0] instanceof Vector3 ? arguments[0] : [arguments[0], arguments[1], arguments[2]]);
 	}
 
 	add(vector) {
