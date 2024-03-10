@@ -1,6 +1,21 @@
 import {Matrix, PI, Vector3} from "./index.js";
 
 export class Matrix4 extends Matrix {
+	/**
+	 * @param {IArguments} args
+	 */
+	static #construct(args) {
+		if (args[0] instanceof Matrix4) {
+			return args[0];
+		}
+
+		const array = new Float32Array(16);
+
+		array.set(args);
+
+		return array;
+	}
+
 	static identity() {
 		return new Matrix4(
 			1, 0, 0, 0,
@@ -129,7 +144,7 @@ export class Matrix4 extends Matrix {
 	 * @param {Matrix4} matrix
 	 */
 	constructor() {
-		super(arguments[0] instanceof Matrix4 ? arguments[0] : [arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7], arguments[8], arguments[9], arguments[10], arguments[11], arguments[12], arguments[13], arguments[14], arguments[15]]);
+		super(Matrix4.#construct(arguments));
 	}
 
 	/**

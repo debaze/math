@@ -2,6 +2,21 @@ import {Vector} from "./index.js";
 
 export class Vector4 extends Vector {
 	/**
+	 * @param {IArguments} args
+	 */
+	static #construct(args) {
+		if (args[0] instanceof Vector4) {
+			return args[0];
+		}
+
+		const array = new Float32Array(4);
+
+		array.set(args);
+
+		return array;
+	}
+
+	/**
 	 * @overload
 	 * @param {...Number} elements
 	 * 
@@ -9,7 +24,7 @@ export class Vector4 extends Vector {
 	 * @param {Vector4} vector
 	 */
 	constructor() {
-		super(arguments[0] instanceof Vector4 ? arguments[0] : [arguments[0], arguments[1], arguments[2], arguments[3]]);
+		super(Vector4.#construct(arguments));
 	}
 
 	add(vector) {
