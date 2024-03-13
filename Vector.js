@@ -21,16 +21,6 @@ export class Vector extends Float32Array {
 	}
 
 	/**
-	 * @deprecated
-	 * 
-	 * @abstract
-	 * @returns {Vector}
-	 */
-	clone() {
-		throw new Error("Not implemented");
-	}
-
-	/**
 	 * @abstract
 	 * @param {Vector} vector
 	 * @returns {this}
@@ -139,16 +129,6 @@ export class Vector extends Float32Array {
 	 */
 	subtractScalar(scalar) {
 		return this.addScalar(-scalar);
-	}
-
-	/**
-	 * @deprecated
-	 * 
-	 * @param {Vector} vector
-	 * @returns {Number}
-	 */
-	to(vector) {
-		return vector.clone().subtract(this).magnitude();
 	}
 
 	/**

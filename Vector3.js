@@ -44,13 +44,6 @@ export class Vector3 extends Vector {
 	}
 
 	/**
-	 * @deprecated
-	 */
-	clone() {
-		return new Vector3(this[0], this[1], this[2]);
-	}
-
-	/**
 	 * @param {Vector3} vector
 	 * @returns {Vector3}
 	 */

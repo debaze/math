@@ -41,16 +41,6 @@ export class Matrix extends Float32Array {
 	}
 
 	/**
-	 * @deprecated
-	 * 
-	 * @abstract
-	 * @returns {Matrix}
-	 */
-	clone() {
-		throw new Error("Not implemented");
-	}
-
-	/**
 	 * @abstract
 	 * @returns {this}
 	 */

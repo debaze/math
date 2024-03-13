@@ -45,13 +45,6 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
-	/**
-	 * @deprecated
-	 */
-	clone() {
-		return new Vector4(this[0], this[1], this[2], this[3]);
-	}
-
 	divide(vector) {
 		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0 || vector[3] === 0) {
 			throw new RangeError("Division by zero");

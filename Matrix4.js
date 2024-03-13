@@ -147,13 +147,6 @@ export class Matrix4 extends Matrix {
 		super(Matrix4.#construct(arguments));
 	}
 
-	/**
-	 * @deprecated
-	 */
-	clone() {
-		return new Matrix4(this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11], this[12], this[13], this[14], this[15]);
-	}
-
 	invert() {
 		const
 			a00 = this[0],
