@@ -1,3 +1,13 @@
+import {Vector, Vector3} from "./index.js";
+
+/**
+ * @typedef {Vector[]} Polytope
+ */
+
+/**
+ * @typedef {Vector3[]} Simplex
+ */
+
 export {AABB} from "./AABB.js";
 export {Matrix} from "./Matrix.js";
 export {Matrix3} from "./Matrix3.js";
