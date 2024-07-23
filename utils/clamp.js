@@ -1,44 +1,4 @@
 /**
- * @param {Number} a
- * @param {Number} b
- */
-export function min(a, b) {
-	if (a < b) {
-		return a;
-	}
-
-	return b;
-}
-
-/**
- * @param {Number} a
- * @param {Number} b
- */
-export function minInt(a, b) {
-	return b + (a - b & a - b >> 31);
-}
-
-/**
- * @param {Number} a
- * @param {Number} b
- */
-export function max(a, b) {
-	if (a > b) {
-		return a;
-	}
-
-	return b;
-}
-
-/**
- * @param {Number} a
- * @param {Number} b
- */
-export function maxInt(a, b) {
-	return a - (a - b & a - b >> 31);
-}
-
-/**
  * @param {Number} n
  * @param {Number} a Lower bound
  * @param {Number} b Upper bound
@@ -54,4 +14,20 @@ export function clamp(n, a, b) {
  */
 export function lerp(a, b, t) {
 	return a + (b - a) * t;
+}
+
+/**
+ * @param {Number} a
+ * @param {Number} b
+ */
+export function max(a, b) {
+	return a > b ? a : b;
+}
+
+/**
+ * @param {Number} a
+ * @param {Number} b
+ */
+export function min(a, b) {
+	return a < b ? a : b;
 }
