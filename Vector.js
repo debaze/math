@@ -106,6 +106,13 @@ export class Vector extends Float32Array {
 	/**
 	 * @returns {this}
 	 */
+	negate() {
+		return this.multiplyScalar(-1);
+	}
+
+	/**
+	 * @returns {this}
+	 */
 	normalize() {
 		if (this.isNull()) {
 			return this;
