@@ -1,4 +1,4 @@
-import {Matrix} from "./index.js";
+import {Matrix, Vector2} from "./index.js";
 
 export class Matrix3 extends Matrix {
 	/**
@@ -24,6 +24,9 @@ export class Matrix3 extends Matrix {
 		);
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	static orthographic(vector) {
 		if (vector[0] === 0 || vector[1] === 0) {
 			throw new RangeError("Division by zero");
@@ -51,6 +54,9 @@ export class Matrix3 extends Matrix {
 		);
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	static translation(vector) {
 		return new Matrix3(
 			1, 0, 0,
@@ -59,6 +65,9 @@ export class Matrix3 extends Matrix {
 		);
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	static scale(vector) {
 		return new Matrix3(
 			vector[0], 0, 0,
@@ -111,6 +120,9 @@ export class Matrix3 extends Matrix {
 		return this.multiplyScalar(1 / d);
 	}
 
+	/**
+	 * @param {Matrix3} matrix
+	 */
 	multiply(matrix) {
 		const
 			a00 = this[0],

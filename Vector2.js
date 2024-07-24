@@ -1,4 +1,4 @@
-import {Vector} from "./index.js";
+import {Matrix3, Vector} from "./index.js";
 
 export class Vector2 extends Vector {
 	/**
@@ -27,6 +27,9 @@ export class Vector2 extends Vector {
 		super(Vector2.#construct(arguments));
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	add(vector) {
 		this[0] += vector[0];
 		this[1] += vector[1];
@@ -41,6 +44,9 @@ export class Vector2 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	divide(vector) {
 		if (vector[0] === 0 || vector[1] === 0) {
 			throw new RangeError("Division by zero");
@@ -52,6 +58,9 @@ export class Vector2 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	dot(vector) {
 		return this[0] * vector[0] + this[1] * vector[1];
 	}
@@ -67,6 +76,9 @@ export class Vector2 extends Vector {
 		return this[0] === 0 && this[1] === 0;
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	lerp(vector, multiplier) {
 		this[0] += multiplier * (vector[0] - this[0]);
 		this[1] += multiplier * (vector[1] - this[1]);
@@ -74,9 +86,25 @@ export class Vector2 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	multiply(vector) {
 		this[0] *= vector[0];
 		this[1] *= vector[1];
+
+		return this;
+	}
+
+	/**
+	 * @param {Matrix3} matrix
+	 */
+	multiplyMatrix(matrix) {
+		const x = this[0];
+		const y = this[1];
+
+		this[0] = matrix[0] * x + matrix[3] * y + matrix[6];
+		this[1] = matrix[1] * x + matrix[4] * y + matrix[7];
 
 		return this;
 	}
@@ -88,6 +116,9 @@ export class Vector2 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector2} vector
+	 */
 	subtract(vector) {
 		this[0] -= vector[0];
 		this[1] -= vector[1];

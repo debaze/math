@@ -1,3 +1,5 @@
+import {Matrix} from "./index.js";
+
 /**
  * @abstract
  */
@@ -91,6 +93,15 @@ export class Vector extends Float32Array {
 	 * @returns {this}
 	 */
 	multiply(vector) {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @param {Matrix} matrix
+	 * @returns {this}
+	 */
+	multiplyMatrix(matrix) {
 		throw new Error("Not implemented");
 	}
 

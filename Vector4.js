@@ -27,6 +27,9 @@ export class Vector4 extends Vector {
 		super(Vector4.#construct(arguments));
 	}
 
+	/**
+	 * @param {Vector4} vector
+	 */
 	add(vector) {
 		this[0] += vector[0];
 		this[1] += vector[1];
@@ -45,6 +48,9 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector4} vector
+	 */
 	divide(vector) {
 		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0 || vector[3] === 0) {
 			throw new RangeError("Division by zero");
@@ -58,6 +64,9 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector4} vector
+	 */
 	dot(vector) {
 		return this[0] * vector[0] + this[1] * vector[1] + this[2] * vector[2] + this[3] * vector[3];
 	}
@@ -75,6 +84,9 @@ export class Vector4 extends Vector {
 		return this[0] === 0 && this[1] === 0 && this[2] === 0 && this[3] === 0;
 	}
 
+	/**
+	 * @param {Vector4} vector
+	 */
 	lerp(vector, multiplier) {
 		this[0] += multiplier * (vector[0] - this[0]);
 		this[1] += multiplier * (vector[1] - this[1]);
@@ -84,6 +96,9 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector4} vector
+	 */
 	multiply(vector) {
 		this[0] *= vector[0];
 		this[1] *= vector[1];
@@ -102,6 +117,9 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
+	/**
+	 * @param {Vector4} vector
+	 */
 	subtract(vector) {
 		this[0] -= vector[0];
 		this[1] -= vector[1];

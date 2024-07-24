@@ -44,6 +44,9 @@ export class Matrix4 extends Matrix {
 		);
 	}
 
+	/**
+	 * @param {Vector3} vector
+	 */
 	static orthographic(vector) {
 		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0) {
 			throw new RangeError("Division by zero");
@@ -118,6 +121,9 @@ export class Matrix4 extends Matrix {
 		return matrix;
 	}
 
+	/**
+	 * @param {Vector3} vector
+	 */
 	static translation(vector) {
 		return new Matrix4(
 			1, 0, 0, 0,
@@ -127,6 +133,9 @@ export class Matrix4 extends Matrix {
 		);
 	}
 
+	/**
+	 * @param {Vector3} vector
+	 */
 	static scale(vector) {
 		return new Matrix4(
 			vector[0], 0, 0, 0,
@@ -195,6 +204,9 @@ export class Matrix4 extends Matrix {
 		return this.multiplyScalar(1 / d);
 	}
 
+	/**
+	 * @param {Matrix4} matrix
+	 */
 	multiply(matrix) {
 		const
 			a00 = this[0],
