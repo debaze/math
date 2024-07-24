@@ -1,7 +1,7 @@
-import {Vector, Vector3} from "./index.js";
+import {Vector3} from "./index.js";
 
 /**
- * @typedef {Vector[]} Polytope
+ * @typedef {Vector3[]} Polytope
  */
 
 /**
