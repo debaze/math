@@ -16,16 +16,6 @@ export class Matrix extends Float32Array {
 	 * @abstract
 	 * @param {Vector} vector
 	 * @returns {Matrix}
-	 * @throws {RangeError}
-	 */
-	static orthographic(vector) {
-		throw new Error("Not implemented");
-	}
-
-	/**
-	 * @abstract
-	 * @param {Vector} vector
-	 * @returns {Matrix}
 	 */
 	static translation(vector) {
 		throw new Error("Not implemented");

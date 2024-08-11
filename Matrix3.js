@@ -25,21 +25,6 @@ export class Matrix3 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector2} vector
-	 */
-	static orthographic(vector) {
-		if (vector[0] === 0 || vector[1] === 0) {
-			throw new RangeError("Division by zero");
-		}
-
-		return new Matrix3(
-			2 / vector[0], 0, 0,
-			0, -2 / vector[1], 0,
-			-1, 1, 1,
-		);
-	}
-
-	/**
 	 * @param {Number} scalar
 	 * @returns {Matrix3}
 	 */

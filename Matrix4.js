@@ -45,18 +45,25 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector3} vector
+	 * Returns a left-handed orthographic projection matrix.
+	 * 
+	 * @param {Number} l Left
+	 * @param {Number} r Right
+	 * @param {Number} b Bottom
+	 * @param {Number} t Top
+	 * @param {Number} n Near
+	 * @param {Number} f Far
 	 */
-	static orthographic(vector) {
-		if (vector[0] === 0 || vector[1] === 0 || vector[2] === 0) {
-			throw new RangeError("Division by zero");
-		}
-
+	static orthographic(l, r, b, t, n, f) {
+		const lr = r - l;
+		const bt = t - b;
+		const nf = f - n;
+	
 		return new Matrix4(
-			2 / vector[0], 0, 0, 0,
-			0, -2 / vector[1], 0, 0,
-			0, 0, 2 / vector[2], 0,
-			-1, 1, 0, 1,
+			2 / lr, 0, 0, -(l + r) / lr,
+			0, 2 / bt, 0, -(b + t) / bt,
+			0, 0, 2 / nf, -(n + f) / nf,
+			0, 0, 0, 1
 		);
 	}
 
