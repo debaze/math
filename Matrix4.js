@@ -26,13 +26,12 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector3} eye
-	 * @param {Vector3} target (will be altered by this method)
+	 * @param {Vector3} position
+	 * @param {Vector3} direction
 	 * @param {Vector3} up
-	 * @returns {Matrix4}
 	 */
-	static lookAt(eye, target, up) {
-		const z = target.subtract(eye).normalize();
+	static lookAt(position, direction, up) {
+		const z = new Vector3(direction).subtract(position).normalize();
 		const x = up.cross(z).normalize();
 		const y = z.cross(x);
 
@@ -40,7 +39,7 @@ export class Matrix4 extends Matrix {
 			x[0], y[0], z[0], 0,
 			x[1], y[1], z[1], 0,
 			x[2], y[2], z[2], 0,
-			-x.dot(eye), -y.dot(eye), -z.dot(eye), 1,
+			-x.dot(position), -y.dot(position), -z.dot(position), 1,
 		);
 	}
 
