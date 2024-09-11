@@ -21,3 +21,10 @@ export {clamp, lerp, max, min} from "./utils/clamp.js";
 export const PI = Math.PI;
 export const SQRT1_2 = Math.SQRT1_2;
 export const SQRT2 = Math.SQRT2;
+
+/**
+ * @param {Number} n
+ */
+export function rad(n) {
+	return n * PI / 180;
+}
