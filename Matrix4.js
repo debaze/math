@@ -44,6 +44,24 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
+	 * @param {Vector3} position
+	 * @param {Vector3} direction Normalized direction relative to the camera
+	 * @param {Vector3} up
+	 */
+	static lookAtRelative(position, direction, up) {
+		const z = direction;
+		const x = up.cross(z).normalize();
+		const y = z.cross(x);
+
+		return new Matrix4(
+			x[0], y[0], z[0], 0,
+			x[1], y[1], z[1], 0,
+			x[2], y[2], z[2], 0,
+			-x.dot(position), -y.dot(position), -z.dot(position), 1,
+		);
+	}
+
+	/**
 	 * Returns a left-handed orthographic projection matrix.
 	 * 
 	 * @param {Number} l Left
