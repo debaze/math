@@ -26,6 +26,8 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
+	 * Computes a left-handed LookAt matrix.
+	 * 
 	 * @param {Vector3} position
 	 * @param {Vector3} direction
 	 * @param {Vector3} up
@@ -60,33 +62,6 @@ export class Matrix4 extends Matrix {
 			x[1], y[1], z[1], 0,
 			x[2], y[2], z[2], 0,
 			-x.dot(position), -y.dot(position), -z.dot(position), 1,
-		);
-	}
-
-	/**
-	 * Pitch must be in the range of [-90 ... 90] degrees and
-	 * yaw must be in the range of [0 ... 360] degrees.
-	 * Pitch and yaw variables must be expressed in radians.
-	 * 
-	 * @param {Vector3} eye
-	 * @param {Number} yawRadians
-	 * @param {Number} pitchRadians
-	 */
-	static lookAtFpsRightHanded(eye, yawRadians, pitchRadians) {
-		const cosPitch = Math.cos(pitchRadians);
-		const sinPitch = Math.sin(pitchRadians);
-		const cosYaw = Math.cos(yawRadians);
-		const sinYaw = Math.sin(yawRadians);
-
-		const xAxis = new Vector3(cosYaw, 0, -sinYaw);
-		const yAxis = new Vector3(sinYaw * sinPitch, cosPitch, cosYaw * sinPitch);
-		const zAxis = new Vector3(sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw);
-
-		return new Matrix4(
-			xAxis[0], yAxis[0], zAxis[0], 0,
-			xAxis[1], yAxis[1], zAxis[1], 0,
-			xAxis[2], yAxis[2], zAxis[2], 0,
-			-xAxis.dot(eye), -yAxis.dot(eye), -zAxis.dot(eye), 1,
 		);
 	}
 

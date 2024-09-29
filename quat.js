@@ -152,3 +152,22 @@ export function normalize(q) {
 
 	return new quat(q.x * invLength, q.y * invLength, q.z * invLength, q.w * invLength);
 }
+
+/**
+ * @param {quat} q
+ */
+export function toEulerAngles(q) {
+	const xx = q.x;
+	const yy = q.y;
+	const zz = q.z;
+	const ww = q.w;
+	const xsq = xx * xx;
+	const ysq = yy * yy;
+	const zsq = zz * zz;
+
+	return new Vector3(
+		Math.atan2(2.0 * (xx * ww - yy * zz), 1.0 - 2.0 * (xsq + zsq)),
+		Math.atan2(2.0 * (yy * ww + xx * zz), 1.0 - 2.0 * (ysq + zsq)),
+		Math.asin(2.0 * (xx * yy + zz * ww)),
+	);
+}
