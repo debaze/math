@@ -90,10 +90,12 @@ export function length(q) {
  * @overload
  * @param {Vector3} v
  * @param {quat} q
+ * @returns {Vector3}
  * 
  * @overload
  * @param {quat} q1
  * @param {quat} q2
+ * @returns {quat}
  */
 export function multiply() {
 	if (arguments[0] instanceof quat) {
@@ -130,10 +132,8 @@ function multiplyQuaternionQuaternion(q1, q2) {
  * @param {quat} q
  */
 function multiplyVectorQuaternion(v, q) {
-	const tmp0 = conjugate(new quat(q));
 	const qv = new quat(v[0], v[1], v[2], 0);
-	const tmp1 = multiplyQuaternionQuaternion(tmp0, qv);
-	const result = multiplyQuaternionQuaternion(tmp1, q);
+	const result = multiplyQuaternionQuaternion(multiplyQuaternionQuaternion(conjugate(q), qv), q);
 
 	return new Vector3(result.x, result.y, result.z);
 }
