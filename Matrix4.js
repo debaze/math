@@ -1,4 +1,4 @@
-import {Matrix, PI, Vector3} from "./index.js";
+import {Matrix, PI, quat, Vector3} from "./index.js";
 
 export class Matrix4 extends Matrix {
 	/**
@@ -44,8 +44,57 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
+	 * Computes a right-handed LookAt matrix.
+	 * 
 	 * @param {Vector3} position
-	 * @param {Vector3} direction Normalized direction relative to the camera
+	 * @param {Vector3} direction
+	 * @param {Vector3} up
+	 */
+	static lookAtRightHanded(position, direction, up) {
+		const z = new Vector3(position).subtract(direction).normalize();
+		const x = up.cross(z).normalize();
+		const y = z.cross(x);
+
+		return new Matrix4(
+			x[0], y[0], z[0], 0,
+			x[1], y[1], z[1], 0,
+			x[2], y[2], z[2], 0,
+			-x.dot(position), -y.dot(position), -z.dot(position), 1,
+		);
+	}
+
+	/**
+	 * Pitch must be in the range of [-90 ... 90] degrees and
+	 * yaw must be in the range of [0 ... 360] degrees.
+	 * Pitch and yaw variables must be expressed in radians.
+	 * 
+	 * @param {Vector3} eye
+	 * @param {Number} yawRadians
+	 * @param {Number} pitchRadians
+	 */
+	static lookAtFpsRightHanded(eye, yawRadians, pitchRadians) {
+		const cosPitch = Math.cos(pitchRadians);
+		const sinPitch = Math.sin(pitchRadians);
+		const cosYaw = Math.cos(yawRadians);
+		const sinYaw = Math.sin(yawRadians);
+
+		const xAxis = new Vector3(cosYaw, 0, -sinYaw);
+		const yAxis = new Vector3(sinYaw * sinPitch, cosPitch, cosYaw * sinPitch);
+		const zAxis = new Vector3(sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw);
+
+		return new Matrix4(
+			xAxis[0], yAxis[0], zAxis[0], 0,
+			xAxis[1], yAxis[1], zAxis[1], 0,
+			xAxis[2], yAxis[2], zAxis[2], 0,
+			-xAxis.dot(eye), -yAxis.dot(eye), -zAxis.dot(eye), 1,
+		);
+	}
+
+	/**
+	 * Computes a LookAt matrix where the direction is relative to the position.
+	 * 
+	 * @param {Vector3} position
+	 * @param {Vector3} direction (normalized)
 	 * @param {Vector3} up
 	 */
 	static lookAtRelative(position, direction, up) {
@@ -167,6 +216,53 @@ export class Matrix4 extends Matrix {
 			0, 0, vector[2], 0,
 			0, 0, 0, 1,
 		);
+	}
+
+	/**
+	 * @param {quat} q
+	 */
+	static fromQuaternion(q) {
+		const qx = q.x;
+		const qy = q.y;
+		const qz = q.z;
+		const qw = q.w;
+
+		const x2 = qx + qx;
+		const y2 = qy + qy;
+		const z2 = qz + qz;
+		const x2x = x2 * qx;
+		const x2y = x2 * qy;
+		const x2z = x2 * qz;
+		const x2w = x2 * qw;
+		const y2y = y2 * qy;
+		const y2z = y2 * qz;
+		const y2w = y2 * qw;
+		const z2z = z2 * qz;
+		const z2w = z2 * qw;
+
+		const result = new Matrix4();
+
+		result[0] = 1.0 - (y2y + z2z);
+		result[1] = x2y - z2w;
+		result[2] = x2z + y2w;
+		result[3] = 0.0;
+
+		result[4] = x2y + z2w;
+		result[5] = 1.0 - (x2x + z2z);
+		result[6] = y2z - x2w;
+		result[7] = 0.0;
+
+		result[8] = x2z - y2w;
+		result[9] = y2z + x2w;
+		result[10] = 1.0 - (x2x + y2y);
+		result[11] = 0.0;
+
+		result[12] = 0.0;
+		result[13] = 0.0;
+		result[14] = 0.0;
+		result[15] = 1.0;
+
+		return result;
 	}
 
 	/**

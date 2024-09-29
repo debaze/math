@@ -1,4 +1,4 @@
-import {Matrix4, Vector} from "./index.js";
+import {Matrix4, quat, Vector} from "./index.js";
 
 export class Vector3 extends Vector {
 	/**
@@ -125,6 +125,25 @@ export class Vector3 extends Vector {
 		this[0] = (matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12]) * w;
 		this[1] = (matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13]) * w;
 		this[2] = (matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14]) * w;
+
+		return this;
+	}
+
+	/**
+	 * @param {quat} q
+	 */
+	multiplyQuaternion(q) {
+		const [vx, vy, vz] = this;
+
+		const qi = q.x, qj = q.y, qk = q.z, qs = q.w;
+
+		const tx = 2 * (qj * vz - qk * vy);
+		const ty = 2 * (qk * vx - qi * vz);
+		const tz = 2 * (qi * vy - qj * vx);
+
+		this[0] = vx + qs * tx + qj * tz - qk * ty;
+		this[1] = vy + qs * ty + qk * tx - qi * tz;
+		this[2] = vz + qs * tz + qi * ty - qj * tx;
 
 		return this;
 	}
