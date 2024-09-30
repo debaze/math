@@ -79,18 +79,6 @@ export class Vector3 extends Vector {
 		return this[0] * vector[0] + this[1] * vector[1] + this[2] * vector[2];
 	}
 
-	floor() {
-		this[0] |= 0;
-		this[1] |= 0;
-		this[2] |= 0;
-
-		return this;
-	}
-
-	isNull() {
-		return this[0] === 0 && this[1] === 0 && this[2] === 0;
-	}
-
 	/**
 	 * @param {Vector3} vector
 	 */

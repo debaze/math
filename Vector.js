@@ -56,22 +56,6 @@ export class Vector extends Float32Array {
 
 	/**
 	 * @abstract
-	 * @returns {this}
-	 */
-	floor() {
-		throw new Error("Not implemented");
-	}
-
-	/**
-	 * @abstract
-	 * @returns {Boolean}
-	 */
-	isNull() {
-		throw new Error("Not implemented");
-	}
-
-	/**
-	 * @abstract
 	 * @param {Vector} vector
 	 * @param {Number} multiplier
 	 * @returns {this}
@@ -125,7 +109,7 @@ export class Vector extends Float32Array {
 	 * @returns {this}
 	 */
 	normalize() {
-		if (this.isNull()) {
+		if (this.magnitude() === 0) {
 			return this;
 		}
 

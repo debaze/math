@@ -65,17 +65,6 @@ export class Vector2 extends Vector {
 		return this[0] * vector[0] + this[1] * vector[1];
 	}
 
-	floor() {
-		this[0] |= 0;
-		this[1] |= 0;
-
-		return this;
-	}
-
-	isNull() {
-		return this[0] === 0 && this[1] === 0;
-	}
-
 	/**
 	 * @param {Vector2} vector
 	 */
