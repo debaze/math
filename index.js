@@ -9,6 +9,7 @@ import {Vector3} from "./index.js";
  */
 
 export {AABB} from "./AABB.js";
+export {inverse, transpose} from "./mat.js";
 export {Matrix} from "./Matrix.js";
 export {Matrix3} from "./Matrix3.js";
 export {Matrix4} from "./Matrix4.js";

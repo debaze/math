@@ -251,54 +251,6 @@ export class Matrix4 extends Matrix {
 		super(Matrix4.#construct(arguments));
 	}
 
-	invert() {
-		const
-			a00 = this[0],
-			a10 = this[1],
-			a20 = this[2],
-			a30 = this[3],
-			a01 = this[4],
-			a11 = this[5],
-			a21 = this[6],
-			a31 = this[7],
-			a02 = this[8],
-			a12 = this[9],
-			a22 = this[10],
-			a32 = this[11],
-			a03 = this[12],
-			a13 = this[13],
-			a23 = this[14],
-			a33 = this[15],
-			b00 = a12 * a23 * a31 - a13 * a22 * a31 + a13 * a21 * a32 - a11 * a23 * a32 - a12 * a21 * a33 + a11 * a22 * a33,
-			b01 = a03 * a22 * a31 - a02 * a23 * a31 - a03 * a21 * a32 + a01 * a23 * a32 + a02 * a21 * a33 - a01 * a22 * a33,
-			b02 = a02 * a13 * a31 - a03 * a12 * a31 + a03 * a11 * a32 - a01 * a13 * a32 - a02 * a11 * a33 + a01 * a12 * a33,
-			b03 = a03 * a12 * a21 - a02 * a13 * a21 - a03 * a11 * a22 + a01 * a13 * a22 + a02 * a11 * a23 - a01 * a12 * a23,
-			d = a00 * b00 + a10 * b01 + a20 * b02 + a30 * b03;
-
-		if (d === 0) {
-			return this.multiplyScalar(0);
-		}
-
-		this[0] = b00;
-		this[1] = a13 * a22 * a30 - a12 * a23 * a30 - a13 * a20 * a32 + a10 * a23 * a32 + a12 * a20 * a33 - a10 * a22 * a33;
-		this[2] = a11 * a23 * a30 - a13 * a21 * a30 + a13 * a20 * a31 - a10 * a23 * a31 - a11 * a20 * a33 + a10 * a21 * a33;
-		this[3] = a12 * a21 * a30 - a11 * a22 * a30 - a12 * a20 * a31 + a10 * a22 * a31 + a11 * a20 * a32 - a10 * a21 * a32;
-		this[4] = b01;
-		this[5] = a02 * a23 * a30 - a03 * a22 * a30 + a03 * a20 * a32 - a00 * a23 * a32 - a02 * a20 * a33 + a00 * a22 * a33;
-		this[6] = a03 * a21 * a30 - a01 * a23 * a30 - a03 * a20 * a31 + a00 * a23 * a31 + a01 * a20 * a33 - a00 * a21 * a33;
-		this[7] = a01 * a22 * a30 - a02 * a21 * a30 + a02 * a20 * a31 - a00 * a22 * a31 - a01 * a20 * a32 + a00 * a21 * a32;
-		this[8] = b02;
-		this[9] = a03 * a12 * a30 - a02 * a13 * a30 - a03 * a10 * a32 + a00 * a13 * a32 + a02 * a10 * a33 - a00 * a12 * a33;
-		this[10] = a01 * a13 * a30 - a03 * a11 * a30 + a03 * a10 * a31 - a00 * a13 * a31 - a01 * a10 * a33 + a00 * a11 * a33;
-		this[11] = a02 * a11 * a30 - a01 * a12 * a30 - a02 * a10 * a31 + a00 * a12 * a31 + a01 * a10 * a32 - a00 * a11 * a32;
-		this[12] = b03;
-		this[13] = a02 * a13 * a20 - a03 * a12 * a20 + a03 * a10 * a22 - a00 * a13 * a22 - a02 * a10 * a23 + a00 * a12 * a23;
-		this[14] = a03 * a11 * a20 - a01 * a13 * a20 - a03 * a10 * a21 + a00 * a13 * a21 + a01 * a10 * a23 - a00 * a11 * a23;
-		this[15] = a01 * a12 * a20 - a02 * a11 * a20 + a02 * a10 * a21 - a00 * a12 * a21 - a01 * a10 * a22 + a00 * a11 * a22;
-
-		return this.multiplyScalar(1 / d);
-	}
-
 	/**
 	 * @param {Matrix4} matrix
 	 */
@@ -378,26 +330,7 @@ export class Matrix4 extends Matrix {
 		return this;
 	}
 
-	transpose() {
-		let element = this[1];
-		this[1] = this[4];
-		this[4] = element;
-		element = this[2];
-		this[2] = this[8];
-		this[8] = element;
-		element = this[3];
-		this[3] = this[12];
-		this[12] = element;
-		element = this[6];
-		this[6] = this[9];
-		this[9] = element;
-		element = this[7];
-		this[7] = this[13];
-		this[13] = element;
-		element = this[11];
-		this[11] = this[14];
-		this[14] = element;
-
-		return this;
+	asWebGPULayout() {
+		return new Float32Array(this);
 	}
 }

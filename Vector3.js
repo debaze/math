@@ -1,4 +1,4 @@
-import {Matrix4, quat, Vector} from "./index.js";
+import {Matrix, Matrix3, Matrix4, quat, Vector} from "./index.js";
 
 export class Vector3 extends Vector {
 	/**
@@ -102,19 +102,22 @@ export class Vector3 extends Vector {
 	}
 
 	/**
-	 * @param {Matrix4} matrix
+	 * @overload
+	 * @param {Matrix3} m
+	 * 
+	 * @overload
+	 * @param {Matrix4} m
 	 */
-	multiplyMatrix(matrix) {
-		const x = this[0];
-		const y = this[1];
-		const z = this[2];
-		const w = 1 / (matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15]);
+	multiplyMatrix() {
+		const m = arguments[0];
 
-		this[0] = (matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12]) * w;
-		this[1] = (matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13]) * w;
-		this[2] = (matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14]) * w;
+		if (m instanceof Matrix3) {
+			return this.#multiplyMatrix3(m);
+		}
 
-		return this;
+		if (m instanceof Matrix4) {
+			return this.#multiplyMatrix4(m);
+		}
 	}
 
 	/**
@@ -157,5 +160,36 @@ export class Vector3 extends Vector {
 
 	toString() {
 		return `${this[0].toFixed(2)} ${this[1].toFixed(2)} ${this[2].toFixed(2)}`;
+	}
+
+	/**
+	 * @param {Matrix4} matrix
+	 */
+	#multiplyMatrix4(matrix) {
+		const x = this[0];
+		const y = this[1];
+		const z = this[2];
+		const w = 1 / (matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15]);
+
+		this[0] = (matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12]) * w;
+		this[1] = (matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13]) * w;
+		this[2] = (matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14]) * w;
+
+		return this;
+	}
+
+	/**
+	 * @param {Matrix3} m
+	 */
+	#multiplyMatrix3(m) {
+		const x = this[0];
+		const y = this[1];
+		const z = this[2];
+
+		this[0] = m[0] * x + m[3] * y + m[6] * z;
+		this[1] = m[1] * x + m[4] * y + m[7] * z;
+		this[2] = m[2] * x + m[5] * y + m[8] * z;
+
+		return this;
 	}
 }

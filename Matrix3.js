@@ -72,39 +72,6 @@ export class Matrix3 extends Matrix {
 		super(Matrix3.#construct(arguments));
 	}
 
-	invert() {
-		const
-			a00 = this[0],
-			a10 = this[1],
-			a20 = this[2],
-			a01 = this[3],
-			a11 = this[4],
-			a21 = this[5],
-			a02 = this[6],
-			a12 = this[7],
-			a22 = this[8],
-			b00 = a22 * a11 - a21 * a12,
-			b01 = a21 * a02 - a22 * a01,
-			b02 = a12 * a01 - a11 * a02,
-			d = a00 * b00 + a10 * b01 + a20 * b02;
-
-		if (d === 0) {
-			return this.multiplyScalar(0);
-		}
-
-		this[0] = b00;
-		this[1] = a20 * a12 - a22 * a10;
-		this[2] = a21 * a10 - a20 * a11;
-		this[3] = b01;
-		this[4] = a22 * a00 - a20 * a02;
-		this[5] = a20 * a01 - a21 * a00;
-		this[6] = b02;
-		this[7] = a10 * a02 - a12 * a00;
-		this[8] = a11 * a00 - a10 * a01;
-
-		return this.multiplyScalar(1 / d);
-	}
-
 	/**
 	 * @param {Matrix3} matrix
 	 */
@@ -156,17 +123,11 @@ export class Matrix3 extends Matrix {
 		return this;
 	}
 
-	transpose() {
-		let element = this[1];
-		this[1] = this[3];
-		this[3] = element;
-		element = this[2];
-		this[2] = this[6];
-		this[6] = element;
-		element = this[5];
-		this[5] = this[7];
-		this[7] = element;
-
-		return this;
+	asWebGPULayout() {
+		return Float32Array.of(
+			this[0], this[1], this[2], 0,
+			this[3], this[4], this[5], 0,
+			this[6], this[7], this[8], 0,
+		);
 	}
 }
