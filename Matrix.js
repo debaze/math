@@ -63,4 +63,11 @@ export class Matrix extends Float32Array {
 	transpose() {
 		throw new Error("Not implemented");
 	}
+
+	/**
+	 * @returns {Float32Array}
+	 */
+	asWebGPULayout() {
+		throw new Error("Not implemented");
+	}
 }
