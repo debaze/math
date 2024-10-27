@@ -20,9 +20,15 @@ export {Vector3} from "./Vector3.js";
 export {Vector4} from "./Vector4.js";
 export {clamp, lerp, max, min} from "./utils/clamp.js";
 
-export const PI = Math.PI;
-export const SQRT1_2 = Math.SQRT1_2;
-export const SQRT2 = Math.SQRT2;
+const pi = Math.PI;
+/**
+ * @deprecated Use {@link pi} instead.
+ */
+const PI = Math.PI;
+const SQRT1_2 = Math.SQRT1_2;
+const SQRT2 = Math.SQRT2;
+
+export {pi, PI, SQRT1_2, SQRT2};
 
 /**
  * @param {Number} n
@@ -42,5 +48,5 @@ export function sin(n) {
  * @param {Number} n
  */
 export function rad(n) {
-	return n * PI / 180;
+	return n * pi / 180;
 }
