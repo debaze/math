@@ -123,6 +123,20 @@ export class Matrix3 extends Matrix {
 		return this;
 	}
 
+	reset() {
+		this[0] = 0;
+		this[1] = 0;
+		this[2] = 0;
+		this[3] = 0;
+		this[4] = 0;
+		this[5] = 0;
+		this[6] = 0;
+		this[7] = 0;
+		this[8] = 0;
+
+		return this;
+	}
+
 	asWebGPULayout() {
 		return Float32Array.of(
 			this[0], this[1], this[2], 0,

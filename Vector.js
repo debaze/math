@@ -118,6 +118,14 @@ export class Vector extends Float32Array {
 
 	/**
 	 * @abstract
+	 * @returns {this}
+	 */
+	reset() {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
 	 * @param {Vector} vector
 	 * @returns {this}
 	 */

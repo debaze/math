@@ -60,6 +60,14 @@ export class Matrix extends Float32Array {
 	 * @abstract
 	 * @returns {this}
 	 */
+	reset() {
+		throw new Error("Not implemented");
+	}
+
+	/**
+	 * @abstract
+	 * @returns {this}
+	 */
 	transpose() {
 		throw new Error("Not implemented");
 	}

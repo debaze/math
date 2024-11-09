@@ -105,6 +105,13 @@ export class Vector2 extends Vector {
 		return this;
 	}
 
+	reset() {
+		this[0] = 0;
+		this[1] = 0;
+
+		return this;
+	}
+
 	/**
 	 * @param {Vector2} vector
 	 */

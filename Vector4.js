@@ -104,6 +104,15 @@ export class Vector4 extends Vector {
 		return this;
 	}
 
+	reset() {
+		this[0] = 0;
+		this[1] = 0;
+		this[2] = 0;
+		this[3] = 0;
+
+		return this;
+	}
+
 	/**
 	 * @param {Vector4} vector
 	 */
