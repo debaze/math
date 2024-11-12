@@ -3,9 +3,11 @@ import {Matrix3, Matrix4} from "./index.js";
 /**
  * @overload
  * @param {Matrix3} m
+ * @returns {Matrix3}
  * 
  * @overload
  * @param {Matrix4} m
+ * @returns {Matrix4}
  */
 export function inverse() {
 	const m = arguments[0];
