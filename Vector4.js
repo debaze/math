@@ -16,6 +16,50 @@ export class Vector4 extends Vector {
 		return array;
 	}
 
+	get x() {
+		return this[0];
+	}
+
+	/**
+	 * @param {Number} x
+	 */
+	set x(x) {
+		this[0] = x;
+	}
+
+	get y() {
+		return this[1];
+	}
+
+	/**
+	 * @param {Number} y
+	 */
+	set y(y) {
+		this[1] = y;
+	}
+
+	get z() {
+		return this[2];
+	}
+
+	/**
+	 * @param {Number} z
+	 */
+	set z(z) {
+		this[2] = z;
+	}
+
+	get w() {
+		return this[3];
+	}
+
+	/**
+	 * @param {Number} w
+	 */
+	set w(w) {
+		this[3] = w;
+	}
+
 	/**
 	 * @overload
 	 * @param {...Number} elements

@@ -1,4 +1,4 @@
-import {Matrix, PI, quat, Vector3} from "./index.js";
+import {Matrix, pi, quat, Vector3} from "./index.js";
 
 export class Matrix4 extends Matrix {
 	/**
@@ -111,15 +111,15 @@ export class Matrix4 extends Matrix {
 	/**
 	 * Returns a perspective projection matrix.
 	 * 
-	 * @param {Number} fieldOfView In radians
+	 * @param {Number} fieldOfView In radians.
 	 * @param {Number} aspectRatio
 	 * @param {Number} nearPlane
 	 * @param {Number} farPlane
-	 * @param {Number} coordinateSystem 1 for left-handed, -1 for right-handed
-	 * @param {Number} [bias]
+	 * @param {Number} coordinateSystem 1 for left-handed, -1 for right-handed.
+	 * @param {Number} [bias] Defaults to pi / 2.
 	 * @returns {Matrix4}
 	 */
-	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem, bias = PI * .5) {
+	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem, bias = pi * 0.5) {
 		const f = Math.tan(bias - fieldOfView * .5);
 		const range = farPlane - nearPlane;
 

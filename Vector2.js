@@ -16,6 +16,28 @@ export class Vector2 extends Vector {
 		return array;
 	}
 
+	get x() {
+		return this[0];
+	}
+
+	/**
+	 * @param {Number} x
+	 */
+	set x(x) {
+		this[0] = x;
+	}
+
+	get y() {
+		return this[1];
+	}
+
+	/**
+	 * @param {Number} y
+	 */
+	set y(y) {
+		this[1] = y;
+	}
+
 	/**
 	 * @overload
 	 * @param {...Number} elements
