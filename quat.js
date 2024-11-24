@@ -1,4 +1,4 @@
-import {cos, sin, Vector3} from "./index.js";
+import {cos, length, sin, Vector3} from "./index.js";
 
 export class quat {
 	static identity() {
@@ -77,13 +77,6 @@ export class quat {
  */
 export function conjugate(q) {
 	return new quat(-q.x, -q.y, -q.z, q.w);
-}
-
-/**
- * @param {quat} q
- */
-export function length(q) {
-	return Math.sqrt(q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w);
 }
 
 /**
