@@ -25,6 +25,8 @@ export class Matrix3 extends Matrix {
 	}
 
 	/**
+	 * Note: Rotation is counter-clockwise.
+	 * 
 	 * @param {Number} scalar
 	 * @returns {Matrix3}
 	 */
