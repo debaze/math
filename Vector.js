@@ -1,5 +1,3 @@
-import {Matrix} from "./index.js";
-
 /**
  * @abstract
  */
@@ -82,7 +80,7 @@ export class Vector extends Float32Array {
 
 	/**
 	 * @abstract
-	 * @param {Matrix} matrix
+	 * @param {import("./index.js").Matrix} matrix
 	 * @returns {this}
 	 */
 	multiplyMatrix(matrix) {

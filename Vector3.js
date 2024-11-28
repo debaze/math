@@ -1,4 +1,4 @@
-import {Matrix3, Matrix4, quat, Vector} from "./index.js";
+import {Matrix3, Matrix4, Vector} from "./index.js";
 
 export class Vector3 extends Vector {
 	/**
@@ -136,10 +136,10 @@ export class Vector3 extends Vector {
 
 	/**
 	 * @overload
-	 * @param {Matrix3} m
+	 * @param {import("./index.js").Matrix3} m
 	 * 
 	 * @overload
-	 * @param {Matrix4} m
+	 * @param {import("./index.js").Matrix4} m
 	 */
 	multiplyMatrix() {
 		const m = arguments[0];
@@ -154,7 +154,7 @@ export class Vector3 extends Vector {
 	}
 
 	/**
-	 * @param {quat} q
+	 * @param {import("./index.js").quat} q
 	 */
 	multiplyQuaternion(q) {
 		const [vx, vy, vz] = this;
@@ -204,7 +204,7 @@ export class Vector3 extends Vector {
 	}
 
 	/**
-	 * @param {Matrix4} matrix
+	 * @param {import("./index.js").Matrix4} matrix
 	 */
 	#multiplyMatrix4(matrix) {
 		const x = this[0];
@@ -220,7 +220,7 @@ export class Vector3 extends Vector {
 	}
 
 	/**
-	 * @param {Matrix3} m
+	 * @param {import("./index.js").Matrix3} m
 	 */
 	#multiplyMatrix3(m) {
 		const x = this[0];

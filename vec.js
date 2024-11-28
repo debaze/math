@@ -60,6 +60,23 @@ export function length(a) {
 }
 
 /**
+ * @overload
+ * @param {import("./index.js").Vector2} a
+ * @returns {import("./index.js").Vector2}
+ * 
+ * @overload
+ * @param {import("./index.js").Vector3} a
+ * @returns {import("./index.js").Vector3}
+ * 
+ * @overload
+ * @param {import("./index.js").Vector4} a
+ * @returns {import("./index.js").Vector4}
+ */
+export function negate(a) {
+	return new a.constructor(a).negate();
+}
+
+/**
  * @type {Overload[]}
  */
 const overloads = [

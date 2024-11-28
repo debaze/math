@@ -1,11 +1,11 @@
-import {Vector3} from "./index.js";
-
 /**
- * @typedef {Vector3[]} Polytope
+ * @deprecated
+ * @typedef {import("./index.js").Vector3[]} Polytope Deprecated.
  */
 
 /**
- * @typedef {Vector3[]} Simplex
+ * @deprecated
+ * @typedef {import("./index.js").Vector3[]} Simplex Deprecated.
  */
 
 export {AABB} from "./AABB.js";
@@ -14,7 +14,7 @@ export {Matrix} from "./Matrix.js";
 export {Matrix3} from "./Matrix3.js";
 export {Matrix4} from "./Matrix4.js";
 export {quat, conjugate, multiply, normalize, toEulerAngles} from "./quat.js";
-export {cross, dot, length} from "./vec.js";
+export {cross, dot, length, negate} from "./vec.js";
 export {Vector} from "./Vector.js";
 export {Vector2} from "./Vector2.js";
 export {Vector3} from "./Vector3.js";

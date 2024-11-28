@@ -1,9 +1,7 @@
-import {Vector2} from "./index.js";
-
 /**
  * @typedef {Object} AabbDescriptor
- * @property {Vector2} position
- * @property {Vector2} size
+ * @property {import("./index.js").Vector2} position
+ * @property {import("./index.js").Vector2} size
  */
 
 export class AABB {
@@ -27,7 +25,7 @@ export class AABB {
 	}
 
 	/**
-	 * @param {Vector2} point
+	 * @param {import("./index.js").Vector2} point
 	 */
 	intersectsPoint(point) {
 		return (

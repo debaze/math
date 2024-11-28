@@ -6,7 +6,7 @@ export class quat {
 	}
 
 	/**
-	 * @param {Vector3} eulerAngles
+	 * @param {import("./index.js").Vector3} eulerAngles
 	 */
 	static fromEulerAngles(eulerAngles) {
 		const [x, y, z] = eulerAngles;
@@ -27,7 +27,7 @@ export class quat {
 	}
 
 	/**
-	 * @param {Vector3} axis
+	 * @param {import("./index.js").Vector3} axis
 	 * @param {Number} angle
 	 */
 	static fromAxisAngle(axis, angle) {
@@ -81,9 +81,9 @@ export function conjugate(q) {
 
 /**
  * @overload
- * @param {Vector3} v
+ * @param {import("./index.js").Vector3} v
  * @param {quat} q
- * @returns {Vector3}
+ * @returns {import("./index.js").Vector3}
  * 
  * @overload
  * @param {quat} q1
@@ -121,7 +121,7 @@ function multiplyQuaternionQuaternion(q1, q2) {
 }
 
 /**
- * @param {Vector3} v
+ * @param {import("./index.js").Vector3} v
  * @param {quat} q
  */
 function multiplyVectorQuaternion(v, q) {

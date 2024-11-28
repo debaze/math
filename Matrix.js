@@ -1,5 +1,3 @@
-import {Vector} from "./index.js";
-
 /**
  * @abstract
  */
@@ -14,7 +12,7 @@ export class Matrix extends Float32Array {
 
 	/**
 	 * @abstract
-	 * @param {Vector} vector
+	 * @param {import("./index.js").Vector} vector
 	 * @returns {Matrix}
 	 */
 	static translation(vector) {
@@ -23,7 +21,7 @@ export class Matrix extends Float32Array {
 
 	/**
 	 * @abstract
-	 * @param {Vector} vector
+	 * @param {import("./index.js").Vector} vector
 	 * @returns {Matrix}
 	 */
 	static scale(vector) {

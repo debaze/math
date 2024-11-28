@@ -1,4 +1,4 @@
-import {Matrix, Vector2} from "./index.js";
+import {Matrix} from "./index.js";
 
 export class Matrix3 extends Matrix {
 	/**
@@ -42,7 +42,7 @@ export class Matrix3 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector2} vector
+	 * @param {import("./index.js").Vector2} vector
 	 */
 	static translation(vector) {
 		return new Matrix3(
@@ -53,7 +53,7 @@ export class Matrix3 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector2} vector
+	 * @param {import("./index.js").Vector2} vector
 	 */
 	static scale(vector) {
 		return new Matrix3(

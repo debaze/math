@@ -1,6 +1,18 @@
-import {Matrix3, Vector} from "./index.js";
+import {cross, Vector} from "./index.js";
 
 export class Vector2 extends Vector {
+	/**
+	 * @param {Vector2} a
+	 * @param {Vector2} b
+	 * @param {Vector2} c
+	 */
+	static area(a, b, c) {
+		const ab = new Vector2(b).subtract(a);
+		const ac = new Vector2(c).subtract(a);
+
+		return cross(ab, ac) * 0.5;
+	}
+
 	/**
 	 * @param {IArguments} args
 	 */
@@ -108,7 +120,7 @@ export class Vector2 extends Vector {
 	}
 
 	/**
-	 * @param {Matrix3} matrix
+	 * @param {import("./index.js").Matrix3} matrix
 	 */
 	multiplyMatrix(matrix) {
 		const x = this[0];

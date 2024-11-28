@@ -1,4 +1,4 @@
-import {Matrix, pi, quat, Vector3} from "./index.js";
+import {Matrix, pi, Vector3} from "./index.js";
 
 export class Matrix4 extends Matrix {
 	/**
@@ -28,9 +28,9 @@ export class Matrix4 extends Matrix {
 	/**
 	 * Computes a left-handed LookAt matrix.
 	 * 
-	 * @param {Vector3} position
-	 * @param {Vector3} direction
-	 * @param {Vector3} up
+	 * @param {import("./index.js").Vector3} position
+	 * @param {import("./index.js").Vector3} direction
+	 * @param {import("./index.js").Vector3} up
 	 */
 	static lookAt(position, direction, up) {
 		const z = new Vector3(direction).subtract(position).normalize();
@@ -48,9 +48,9 @@ export class Matrix4 extends Matrix {
 	/**
 	 * Computes a right-handed LookAt matrix.
 	 * 
-	 * @param {Vector3} position
-	 * @param {Vector3} direction
-	 * @param {Vector3} up
+	 * @param {import("./index.js").Vector3} position
+	 * @param {import("./index.js").Vector3} direction
+	 * @param {import("./index.js").Vector3} up
 	 */
 	static lookAtRightHanded(position, direction, up) {
 		const z = new Vector3(position).subtract(direction).normalize();
@@ -68,9 +68,9 @@ export class Matrix4 extends Matrix {
 	/**
 	 * Computes a LookAt matrix where the direction is relative to the position.
 	 * 
-	 * @param {Vector3} position
-	 * @param {Vector3} direction (normalized)
-	 * @param {Vector3} up
+	 * @param {import("./index.js").Vector3} position
+	 * @param {import("./index.js").Vector3} direction (normalized)
+	 * @param {import("./index.js").Vector3} up
 	 */
 	static lookAtRelative(position, direction, up) {
 		const z = direction;
@@ -132,7 +132,7 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector3} vector
+	 * @param {import("./index.js").Vector3} vector
 	 * @returns {Matrix4}
 	 */
 	static rotation(vector) {
@@ -170,7 +170,7 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector3} vector
+	 * @param {import("./index.js").Vector3} vector
 	 */
 	static translation(vector) {
 		return new Matrix4(
@@ -182,7 +182,7 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @param {Vector3} vector
+	 * @param {import("./index.js").Vector3} vector
 	 */
 	static scale(vector) {
 		return new Matrix4(
@@ -194,7 +194,7 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
-	 * @param {quat} q
+	 * @param {import("./index.js").quat} q
 	 */
 	static fromQuaternion(q) {
 		const qx = q.x;

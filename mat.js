@@ -2,12 +2,12 @@ import {Matrix3, Matrix4} from "./index.js";
 
 /**
  * @overload
- * @param {Matrix3} m
- * @returns {Matrix3}
+ * @param {import("./index.js").Matrix3} m
+ * @returns {import("./index.js").Matrix3}
  * 
  * @overload
- * @param {Matrix4} m
- * @returns {Matrix4}
+ * @param {import("./index.js").Matrix4} m
+ * @returns {import("./index.js").Matrix4}
  */
 export function inverse() {
 	const m = arguments[0];
@@ -23,10 +23,10 @@ export function inverse() {
 
 /**
  * @overload
- * @param {Matrix3} m
+ * @param {import("./index.js").Matrix3} m
  * 
  * @overload
- * @param {Matrix4} m
+ * @param {import("./index.js").Matrix4} m
  */
 export function transpose() {
 	const m = arguments[0];
@@ -41,7 +41,7 @@ export function transpose() {
 }
 
 /**
- * @param {Matrix3} m
+ * @param {import("./index.js").Matrix3} m
  */
 function inverseMatrix3(m) {
 	const a00 = m[0];
@@ -74,7 +74,7 @@ function inverseMatrix3(m) {
 /**
  * Adapted from {@link https://github.com/gpuweb/gpuweb/issues/4115#issuecomment-2266254366}.
  * 
- * @param {Matrix4} m
+ * @param {import("./index.js").Matrix4} m
  */
 function inverseMatrix4(m) {
 	const a00 = m[0];
@@ -130,7 +130,7 @@ function inverseMatrix4(m) {
 }
 
 /**
- * @param {Matrix3} m
+ * @param {import("./index.js").Matrix3} m
  */
 function transposeMatrix3(m) {
 	return new Matrix3(
@@ -141,7 +141,7 @@ function transposeMatrix3(m) {
 }
 
 /**
- * @param {Matrix4} m
+ * @param {import("./index.js").Matrix4} m
  */
 function transposeMatrix4(m) {
 	return new Matrix3(
