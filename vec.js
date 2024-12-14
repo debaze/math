@@ -38,6 +38,26 @@ export function cross(a, b) {
  * @param {import("./index.js").Vector4} b
  * @returns {Number}
  */
+export function distance(a, b) {
+	return length(new b.constructor(b).subtract(a));
+}
+
+/**
+ * @overload
+ * @param {import("./index.js").Vector2} a
+ * @param {import("./index.js").Vector2} b
+ * @returns {Number}
+ * 
+ * @overload
+ * @param {import("./index.js").Vector3} a
+ * @param {import("./index.js").Vector3} b
+ * @returns {Number}
+ * 
+ * @overload
+ * @param {import("./index.js").Vector4} a
+ * @param {import("./index.js").Vector4} b
+ * @returns {Number}
+ */
 export function dot(a, b) {
 	const index = a.length - 2;
 
