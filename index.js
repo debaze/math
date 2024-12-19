@@ -48,6 +48,6 @@ export function sin(n) {
 /**
  * @param {Number} n
  */
-export function rad(n) {
+export function radians(n) {
 	return n * pi / 180;
 }

@@ -170,6 +170,21 @@ export class Matrix4 extends Matrix {
 	}
 
 	/**
+	 * @param {Number} angle
+	 */
+	static zRotation(angle) {
+		const c = Math.cos(angle);
+		const s = Math.sin(angle);
+	
+		return new Matrix4(
+			c,   s,   0.0, 0.0,
+		   -s  , c,   0.0, 0.0,
+			0.0, 0.0, 1.0, 0.0,
+			0.0, 0.0, 0.0, 1.0,
+		);
+	}
+
+	/**
 	 * @param {import("./index.js").Vector3} vector
 	 */
 	static translation(vector) {
