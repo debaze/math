@@ -70,6 +70,10 @@ export class quat {
 			this.w = arguments[0].w;
 		}
 	}
+
+	magnitude() {
+		return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
+	}
 }
 
 /**

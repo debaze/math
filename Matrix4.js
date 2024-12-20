@@ -99,7 +99,7 @@ export class Matrix4 extends Matrix {
 		const lr = r - l;
 		const bt = t - b;
 		const nf = f - n;
-	
+
 		return new Matrix4(
 			2 / lr, 0, 0, -(l + r) / lr,
 			0, 2 / bt, 0, -(b + t) / bt,
@@ -175,7 +175,7 @@ export class Matrix4 extends Matrix {
 	static zRotation(angle) {
 		const c = Math.cos(angle);
 		const s = Math.sin(angle);
-	
+
 		return new Matrix4(
 			c,   s,   0.0, 0.0,
 		   -s  , c,   0.0, 0.0,

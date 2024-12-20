@@ -1,13 +1,3 @@
-/**
- * @deprecated
- * @typedef {import("./index.js").Vector3[]} Polytope Deprecated.
- */
-
-/**
- * @deprecated
- * @typedef {import("./index.js").Vector3[]} Simplex Deprecated.
- */
-
 export {AABB} from "./AABB.js";
 export {inverse, transpose} from "./mat.js";
 export {Matrix} from "./Matrix.js";
@@ -21,33 +11,31 @@ export {Vector3} from "./Vector3.js";
 export {Vector4} from "./Vector4.js";
 export {clamp, lerp, max, min} from "./utils/clamp.js";
 
+export * from "./trig.js";
+
 const pi = Math.PI;
-/**
- * @deprecated Use {@link pi} instead.
- */
-const PI = Math.PI;
 const SQRT1_2 = Math.SQRT1_2;
 const SQRT2 = Math.SQRT2;
 
-export {pi, PI, SQRT1_2, SQRT2};
+export {pi, SQRT1_2, SQRT2};
 
 /**
- * @param {Number} n
+ * @param {Number} a
  */
-export function cos(n) {
-	return Math.cos(n);
+export function cos(a) {
+	return Math.cos(a);
 }
 
 /**
- * @param {Number} n
+ * @param {Number} a
  */
-export function sin(n) {
-	return Math.sin(n);
+export function sin(a) {
+	return Math.sin(a);
 }
 
 /**
- * @param {Number} n
+ * @param {Number} a
  */
-export function radians(n) {
-	return n * pi / 180;
+export function sqrt(a) {
+	return Math.sqrt(a);
 }
