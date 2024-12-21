@@ -144,7 +144,7 @@ function transposeMatrix3(m) {
  * @param {import("./index.js").Matrix4} m
  */
 function transposeMatrix4(m) {
-	return new Matrix3(
+	return new Matrix4(
 		m[0],  m[4],  m[8],  m[12],
 		m[1],  m[5],  m[9],  m[13],
 		m[2],  m[6],  m[10], m[14],
