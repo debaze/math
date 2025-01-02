@@ -20,10 +20,17 @@ const SQRT2 = Math.SQRT2;
 export {pi, SQRT1_2, SQRT2};
 
 /**
- * @param {Number} a
+ * @param {Number} n
  */
-export function cos(a) {
-	return Math.cos(a);
+export function abs(n) {
+	return Math.abs(n);
+}
+
+/**
+ * @param {Number} n
+ */
+export function cos(n) {
+	return Math.cos(n);
 }
 
 /**
