@@ -1,4 +1,4 @@
-import {Matrix, pi, Vector3} from "./index.js";
+import {cos, Matrix, pi, sin, tan, Vector3} from "./index.js";
 
 export class Matrix4 extends Matrix {
 	/**
@@ -120,7 +120,7 @@ export class Matrix4 extends Matrix {
 	 * @returns {Matrix4}
 	 */
 	static perspective(fieldOfView, aspectRatio, nearPlane, farPlane, coordinateSystem, bias = pi * 0.5) {
-		const f = Math.tan(bias - fieldOfView * .5);
+		const f = tan(bias - fieldOfView * .5);
 		const range = farPlane - nearPlane;
 
 		return new Matrix4(
@@ -136,8 +136,8 @@ export class Matrix4 extends Matrix {
 	 * @returns {Matrix4}
 	 */
 	static rotation(vector) {
-		let c = Math.cos(vector[0]);
-		let s = Math.sin(vector[0]);
+		let c = cos(vector[0]);
+		let s = sin(vector[0]);
 
 		const matrix = new Matrix4(
 			1, 0, 0, 0,
@@ -146,8 +146,8 @@ export class Matrix4 extends Matrix {
 			0, 0, 0, 1,
 		);
 
-		c = Math.cos(vector[1]);
-		s = Math.sin(vector[1]);
+		c = cos(vector[1]);
+		s = sin(vector[1]);
 
 		matrix.multiply(new Matrix4(
 			c, 0, -s, 0,
@@ -156,8 +156,8 @@ export class Matrix4 extends Matrix {
 			0, 0, 0, 1,
 		));
 
-		c = Math.cos(vector[2]);
-		s = Math.sin(vector[2]);
+		c = cos(vector[2]);
+		s = sin(vector[2]);
 
 		matrix.multiply(new Matrix4(
 			c, s, 0, 0,
@@ -173,8 +173,8 @@ export class Matrix4 extends Matrix {
 	 * @param {Number} angle
 	 */
 	static zRotation(angle) {
-		const c = Math.cos(angle);
-		const s = Math.sin(angle);
+		const c = cos(angle);
+		const s = sin(angle);
 
 		return new Matrix4(
 			c,   s,   0.0, 0.0,

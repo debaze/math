@@ -1,5 +1,6 @@
 import {cos, length, sin, Vector3} from "./index.js";
 
+// https://www.sjbrown.co.uk/posts/representing-rotations-in-quaternion-arithmetic
 export class quat {
 	static identity() {
 		return new quat(0, 0, 0, 1);
@@ -28,18 +29,14 @@ export class quat {
 
 	/**
 	 * @param {import("./index.js").Vector3} axis
-	 * @param {Number} angle
+	 * @param {Number} t Angle
 	 */
-	static fromAxisAngle(axis, angle) {
-		const ha = angle * 0.5;
-		const sa = sin(ha);
+	static fromAxisAngle(axis, t) {
+		const t_2 = t * 0.5;
+		const w = cos(t_2);
+		const xyz = new Vector3(axis).multiplyScalar(sin(t_2));
 
-		return new quat(
-			axis[0] * sa,
-			axis[1] * sa,
-			axis[2] * sa,
-			cos(ha),
-		);
+		return new quat(xyz[0], xyz[1], xyz[2], w);
 	}
 
 	x;

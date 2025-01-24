@@ -43,6 +43,13 @@ export function sin(a) {
 /**
  * @param {Number} a
  */
+export function tan(a) {
+	return Math.tan(a);
+}
+
+/**
+ * @param {Number} a
+ */
 export function sqrt(a) {
 	return Math.sqrt(a);
 }

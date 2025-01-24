@@ -154,22 +154,17 @@ export class Vector3 extends Vector {
 	}
 
 	/**
+	 * @see {@link https://blog.molecular-matters.com/2013/05/24/a-faster-quaternion-vector-multiplication}
+	 * 
 	 * @param {import("./index.js").quat} q
 	 */
 	multiplyQuaternion(q) {
-		const [vx, vy, vz] = this;
+		const xyz = new Vector3(q.x, q.y, q.z);
 
-		const qi = q.x, qj = q.y, qk = q.z, qs = q.w;
+		const t = xyz.cross(this).multiplyScalar(2);
+		const t2 = xyz.cross(t);
 
-		const tx = 2 * (qj * vz - qk * vy);
-		const ty = 2 * (qk * vx - qi * vz);
-		const tz = 2 * (qi * vy - qj * vx);
-
-		this[0] = vx + qs * tx + qj * tz - qk * ty;
-		this[1] = vy + qs * ty + qk * tx - qi * tz;
-		this[2] = vz + qs * tz + qi * ty - qj * tx;
-
-		return this;
+		return t.multiplyScalar(q.w).add(this).add(t2);
 	}
 
 	multiplyScalar(scalar) {
