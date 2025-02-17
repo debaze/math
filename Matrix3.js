@@ -1,4 +1,4 @@
-import {Matrix} from "./index.js";
+import {cos, Matrix, sin} from "./index.js";
 
 export class Matrix3 extends Matrix {
 	/**
@@ -25,19 +25,19 @@ export class Matrix3 extends Matrix {
 	}
 
 	/**
-	 * Note: Rotation is counter-clockwise.
+	 * https://en.wikipedia.org/wiki/Rotation_matrix
 	 * 
-	 * @param {Number} scalar
+	 * @param {Number} a
 	 * @returns {Matrix3}
 	 */
-	static rotation(scalar) {
-		const c = Math.cos(scalar);
-		const s = Math.sin(scalar);
+	static rotation(a) {
+		const c = cos(a);
+		const s = sin(a);
 
 		return new Matrix3(
-			c, -s, 0,
-			s, c, 0,
-			0, 0, 1,
+			c, -s,  0,
+			s,  c,  0,
+			0,  0,  1,
 		);
 	}
 
